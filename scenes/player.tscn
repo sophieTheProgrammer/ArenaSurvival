@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://djy788xhlsrg1"]
+
+[ext_resource type="Script" uid="uid://cyyl7aaseaslu" path="res://scenes/player.gd" id="1_3vyb7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u8vuu"]
+
+[node name="Player" type="CharacterBody2D" unique_id=177154753]
+script = ExtResource("1_3vyb7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=285247871]
+shape = SubResource("CircleShape2D_u8vuu")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1629436760]
+position = Vector2(0.5, -0.5)
+scale = Vector2(1.2916666, 1.2916666)
+polygon = PackedVector2Array(-12, -2, 1, -12, 12, 2, 0, 12)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1914151812]

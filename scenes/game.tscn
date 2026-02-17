@@ -1,3 +1,14 @@
 [gd_scene format=3 uid="uid://bt3v0adpgjik8"]
 
+[ext_resource type="PackedScene" uid="uid://djy788xhlsrg1" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="Texture2D" uid="uid://xpamr7sfp717" path="res://icon.svg" id="2_yqjtg"]
+
 [node name="game" type="Node2D" unique_id=978982764]
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=869853265]
+position = Vector2(2.9999924, 3)
+scale = Vector2(2.4414063, 2.14715)
+texture = ExtResource("2_yqjtg")
+
+[node name="Player" parent="." unique_id=177154753 instance=ExtResource("1_uwrxv")]
+position = Vector2(1, 1)
