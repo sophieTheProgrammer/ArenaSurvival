@@ -1,8 +1,11 @@
-extends CharacterBody2D
+class_name Player
 
+extends CharacterBody2D
 
 const SPEED := 600.0
 const ACCEL := 1.3
+
+var health := 1
 
 var input: Vector2
 
