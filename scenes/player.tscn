@@ -16,3 +16,5 @@ scale = Vector2(1.2916666, 1.2916666)
 polygon = PackedVector2Array(-12, -2, 1, -12, 12, 2, 0, 12)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1914151812]
+
+[node name="Camera2D2" type="Camera2D" parent="." unique_id=601315435]

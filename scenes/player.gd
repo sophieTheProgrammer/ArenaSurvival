@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 
-const SPEED := 300.0
-const JUMP_VELOCITY := -400.0
+const SPEED := 600.0
+const ACCEL := 1.3
 
 var input: Vector2
 
@@ -17,10 +17,7 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	getNormalizedInput()
 	
-	if input:
-		velocity.x = input.x * SPEED
-		velocity.y = input.y * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.y = move_toward(velocity.y, 0, SPEED)
+	velocity = lerp(velocity, input * SPEED, delta * ACCEL)
+	
+
 	move_and_slide()
