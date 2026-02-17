@@ -16,11 +16,17 @@ func getNormalizedInput():
 	
 	return input.normalized()
 	
-func _physics_process(delta: float) -> void:
+func lookAtMouse(delta):
+	var new_transform := transform.looking_at(get_global_mouse_position())
+
+	transform = transform.interpolate_with(new_transform, 0.1)
+	
+func _physics_process(delta: float) -> void:	
 	# Get the input direction and handle the movement/deceleration.
 	getNormalizedInput()
 	
+	lookAtMouse(delta)
+
 	velocity = lerp(velocity, input * SPEED, delta * ACCEL)
-	
 
 	move_and_slide()

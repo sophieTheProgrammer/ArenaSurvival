@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cyyl7aaseaslu" path="res://scenes/player.gd" id="1_3vyb7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u8vuu"]
-radius = 16.0
+radius = 9.219544
 
 [node name="Player" type="CharacterBody2D" unique_id=177154753]
 script = ExtResource("1_3vyb7")
@@ -12,10 +12,13 @@ script = ExtResource("1_3vyb7")
 shape = SubResource("CircleShape2D_u8vuu")
 
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=1629436760]
-position = Vector2(-1, -8)
-scale = Vector2(2.1754386, 2.0182292)
-color = Color(0.9185914, 0.30239186, 0.5858898, 1)
-polygon = PackedVector2Array(-6.1935487, 8.516129, 8.516129, 8.516129, 0.7741934, -3.870968)
+position = Vector2(-36.99855, -5.1763)
+rotation = 1.5707964
+scale = Vector2(2.1754386, 2.8139882)
+color = Color(0.55350006, 0.53, 1, 1)
+offset = Vector2(2.379427, -19.544697)
+polygon = PackedVector2Array(-16.088709, 12.488628, 18.846773, 12.488628, 18.387094, 3.2490726, 9.193548, 2.8937051, 5.9758058, -6.7012177, 0.9193548, -12.387096, -3.7070465, -6.6390123, -4.596774, 2.8937051, -15.629031, 3.6044402)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=184090542]
+position = Vector2(1, -1)
 position_smoothing_enabled = true
