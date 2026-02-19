@@ -17,3 +17,5 @@ polygon = PackedVector2Array(-7, 0, -5, -5, 0, -6, 5, -4, 6, 0, 5, 5, 0, 5, -5, 
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1162587683]
 shape = SubResource("CircleShape2D_7p1mj")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

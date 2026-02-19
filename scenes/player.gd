@@ -30,3 +30,7 @@ func _physics_process(delta: float) -> void:
 	velocity = lerp(velocity, input * SPEED, delta * ACCEL)
 
 	move_and_slide()
+
+# hit by enemy oh no dying
+func _on_enemy_player_hit() -> void:
+	get_tree().reload_current_scene()
