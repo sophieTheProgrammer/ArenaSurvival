@@ -2,15 +2,31 @@
 
 [ext_resource type="PackedScene" uid="uid://djy788xhlsrg1" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://xpamr7sfp717" path="res://icon.svg" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://bt5av3t27rt4i" path="res://scenes/enemy.tscn" id="3_lnu2h"]
 
 [node name="game" type="Node2D" unique_id=978982764]
 
+[node name="Boundary" type="StaticBody2D" parent="." unique_id=421074037]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Boundary" unique_id=1121099140]
+build_mode = 1
+polygon = PackedVector2Array(-517, -204, -163, -457, 416, -438, 629, -167, 796, 104, 628, 430, 525, 548, -224, 704, -413, 564, -617, 435, -644, 163, -644, 163)
+
+[node name="Polygon2D" type="Polygon2D" parent="Boundary" unique_id=1879322438]
+position = Vector2(22, 9)
+color = Color(0.6255971, 0.6255971, 0.6255971, 1)
+invert_enabled = true
+polygon = PackedVector2Array(-517, -204, -163, -457, 416, -438, 629, -167, 796, 104, 628, 430, 525, 548, -224, 704, -413, 564, -617, 435, -644, 163, -644, 163)
+
 [node name="Icon" type="Sprite2D" parent="." unique_id=869853265]
-position = Vector2(156, 44)
+position = Vector2(167, 108)
 scale = Vector2(2.4414063, 2.14715)
 texture = ExtResource("2_yqjtg")
 offset = Vector2(-62.668808, -19.09508)
 
 [node name="Player" parent="." unique_id=177154753 instance=ExtResource("1_uwrxv")]
-visible = true
 position = Vector2(1, 1)
+
+[node name="enemy" parent="." unique_id=75792727 node_paths=PackedStringArray("player") instance=ExtResource("3_lnu2h")]
+position = Vector2(-65, 6)
+player = NodePath("../Player")
