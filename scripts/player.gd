@@ -5,11 +5,15 @@ extends CharacterBody2D
 const SPEED := 600.0
 const ACCEL := 1.3
 
-var health := 20
+const STARTING_HEALTH : float = 20.0
+
+var health := STARTING_HEALTH
 
 var input: Vector2
 func _ready() -> void:
-	pass
+	Global.player_node = self
+	health = STARTING_HEALTH
+
 func getNormalizedInput():
 
 	input.x = Input.get_axis("left", "right")
