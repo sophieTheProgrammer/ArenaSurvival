@@ -10,6 +10,10 @@ const STARTING_HEALTH : float = 20.0
 var health := STARTING_HEALTH
 
 var input: Vector2
+
+signal healthChanged(health)
+signal died
+
 func _ready() -> void:
 	Global.player_node = self
 	health = STARTING_HEALTH
@@ -29,6 +33,7 @@ func lookAtMouse(delta):
 func _process(delta: float) -> void:
 	if health == 0:
 		print("player die")
+		died.emit()
 		get_tree().call_deferred("reload_current_scene")
 
 func _physics_process(delta: float) -> void:	
@@ -43,6 +48,7 @@ func _physics_process(delta: float) -> void:
 
 func lowerHeath(healthTaken):
 	health -= healthTaken
+	healthChanged.emit(health)
 	print("health is currently ", health)
 	
 	

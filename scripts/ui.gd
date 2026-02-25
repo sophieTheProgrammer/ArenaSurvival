@@ -11,7 +11,9 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	time += delta
-	health_bar.value = 100 * (Global.player_node.health / Global.player_node.STARTING_HEALTH)
-	
+	time += delta	
 	timer_number.text = str(snapped(time, 0.1))
+
+
+func _on_player_health_changed(health: Variant) -> void:
+	health_bar.value = 100 * (Global.player_node.health / Global.player_node.STARTING_HEALTH)
