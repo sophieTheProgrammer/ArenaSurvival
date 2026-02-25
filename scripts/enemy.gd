@@ -11,6 +11,7 @@ var is_damaging := false
 
 var exitingPlayer := false
 func _ready() -> void:
+	add_to_group("enemy")
 	if not player:
 		printerr("no player reference to enemy")
 
@@ -36,8 +37,3 @@ func _on_damage_timer_timeout() -> void:
 	if is_damaging:
 		player.lowerHeath(1)
 		damage_timer.start()
-		
-		
-		
-
-	

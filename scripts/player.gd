@@ -2,9 +2,11 @@ class_name Player
 
 extends CharacterBody2D
 
+@export var Bullet : PackedScene
+@onready var muzzle: Marker2D = $Muzzle
+
 const SPEED := 600.0
 const ACCEL := 1.3
-
 const STARTING_HEALTH : float = 20.0
 
 var health := STARTING_HEALTH
@@ -35,6 +37,8 @@ func _process(delta: float) -> void:
 		print("player die")
 		died.emit()
 		get_tree().call_deferred("reload_current_scene")
+	if Input.is_action_just_pressed("shoot"):
+		shoot()
 
 func _physics_process(delta: float) -> void:	
 	# Get the input direction and handle the movement/deceleration.
@@ -50,5 +54,10 @@ func lowerHeath(healthTaken):
 	health -= healthTaken
 	healthChanged.emit(health)
 	print("health is currently ", health)
-	
+
+func shoot():
+	print("shooting bullet")
+	var bullet = Bullet.instantiate()
+	owner.add_child(bullet)
+	bullet.transform = muzzle.global_transform
 	

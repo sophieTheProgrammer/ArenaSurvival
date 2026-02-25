@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://h6ynoginb4jv" path="res://scripts/enemy.gd" id="1_7p1mj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7p1mj"]
-radius = 5.0
+radius = 6.0
 
-[node name="enemy" type="CharacterBody2D" unique_id=75792727]
+[node name="enemy" type="CharacterBody2D" unique_id=75792727 groups=["enemy"]]
 script = ExtResource("1_7p1mj")
 
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=594615164]
@@ -20,6 +20,9 @@ shape = SubResource("CircleShape2D_7p1mj")
 
 [node name="DamageTimer" type="Timer" parent="." unique_id=1769553131]
 wait_time = 0.1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1899519360]
+shape = SubResource("CircleShape2D_7p1mj")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
