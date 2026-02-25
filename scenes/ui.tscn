@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://00m6lt6t6vg8"]
 
-[ext_resource type="Script" uid="uid://hn26pbvjt2ma" path="res://scenes/health_bar.gd" id="1_nt7q6"]
+[ext_resource type="Script" uid="uid://bjeoyx50w6a1o" path="res://scripts/ui.gd" id="1_x4jx1"]
 
 [node name="Control" type="Control" unique_id=1332954548]
 layout_mode = 3
@@ -9,11 +9,30 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_x4jx1")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1394851493]
+
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=106159946]
+offset_left = 873.0
+offset_top = 10.0
+offset_right = 1146.0
+offset_bottom = 85.0
+
+[node name="TimerNumber" type="RichTextLabel" parent="CanvasLayer/Panel" unique_id=1644808657]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -244.0
+offset_top = 3.0
+offset_right = -55.0
+offset_bottom = 71.0
+grow_horizontal = 0
+theme_override_font_sizes/normal_font_size = 25
+text = "placeholder time"
 
 [node name="HealthBar" type="ProgressBar" parent="CanvasLayer" unique_id=1048179182]
 offset_right = 407.0
 offset_bottom = 79.0
 value = 50.0
-script = ExtResource("1_nt7q6")
