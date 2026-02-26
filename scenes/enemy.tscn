@@ -5,7 +5,12 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_7p1mj"]
 radius = 6.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7p1mj"]
+size = Vector2(6.5, 6.5)
+
 [node name="enemy" type="CharacterBody2D" unique_id=75792727 groups=["enemy"]]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_7p1mj")
 
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=594615164]
@@ -13,17 +18,17 @@ scale = Vector2(1, 1.0909091)
 color = Color(1, 0.13, 0.13, 1)
 polygon = PackedVector2Array(-7, 0, -5, -5, 0, -6, 5, -4, 6, 0, 5, 5, 0, 5, -5, 4)
 
-[node name="Area2D" type="Area2D" parent="." unique_id=864132830]
+[node name="Damage Hitbox" type="Area2D" parent="." unique_id=864132830]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1162587683]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Damage Hitbox" unique_id=1162587683]
 shape = SubResource("CircleShape2D_7p1mj")
 
 [node name="DamageTimer" type="Timer" parent="." unique_id=1769553131]
 wait_time = 0.1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1899519360]
-shape = SubResource("CircleShape2D_7p1mj")
+[node name="bulletCollision" type="CollisionShape2D" parent="." unique_id=37045997]
+shape = SubResource("RectangleShape2D_7p1mj")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Damage Hitbox" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Damage Hitbox" to="." method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]
