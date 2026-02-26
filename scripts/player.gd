@@ -56,7 +56,6 @@ func lowerHeath(healthTaken):
 	print("health is currently ", health)
 
 func shoot():
-	print("shooting bullet")
 	var bullet = Bullet.instantiate()
 	owner.add_child(bullet)
 	bullet.transform = muzzle.global_transform

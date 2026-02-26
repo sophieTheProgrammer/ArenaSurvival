@@ -8,7 +8,7 @@ size = Vector2(8, 51.5)
 
 [node name="Bullet" type="Area2D" unique_id=1764033198]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 3
 script = ExtResource("1_y25gk")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=310041720]
@@ -20,3 +20,5 @@ shape = SubResource("RectangleShape2D_y25gk")
 [node name="LaserRed01" type="Sprite2D" parent="." unique_id=517092768]
 rotation = 1.5707964
 texture = ExtResource("1_mkf8s")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

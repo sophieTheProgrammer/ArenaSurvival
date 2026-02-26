@@ -55,6 +55,11 @@ shoot={
 ]
 }
 
+[layer_names]
+
+2d_render/layer_1="general"
+2d_render/layer_2="bullet_detectable"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

@@ -3,10 +3,10 @@
 [ext_resource type="Script" uid="uid://h6ynoginb4jv" path="res://scripts/enemy.gd" id="1_7p1mj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7p1mj"]
-radius = 6.0
+radius = 11.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7p1mj"]
-size = Vector2(6.5, 6.5)
+size = Vector2(24.25, 19.25)
 
 [node name="enemy" type="CharacterBody2D" unique_id=75792727 groups=["enemy"]]
 collision_layer = 2
@@ -14,7 +14,8 @@ collision_mask = 2
 script = ExtResource("1_7p1mj")
 
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=594615164]
-scale = Vector2(1, 1.0909091)
+position = Vector2(1, 1.0000005)
+scale = Vector2(2, 2.0495868)
 color = Color(1, 0.13, 0.13, 1)
 polygon = PackedVector2Array(-7, 0, -5, -5, 0, -6, 5, -4, 6, 0, 5, 5, 0, 5, -5, 4)
 
@@ -28,6 +29,7 @@ wait_time = 0.1
 
 [node name="bulletCollision" type="CollisionShape2D" parent="." unique_id=37045997]
 shape = SubResource("RectangleShape2D_7p1mj")
+debug_color = Color(0, 0.6009078, 0.696721, 0.41960785)
 
 [connection signal="body_entered" from="Damage Hitbox" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Damage Hitbox" to="." method="_on_area_2d_body_exited"]
