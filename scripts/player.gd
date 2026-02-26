@@ -4,21 +4,26 @@ extends CharacterBody2D
 
 @export var Bullet : PackedScene
 @onready var muzzle: Marker2D = $Muzzle
+@onready var cooldown_timer: Timer = $CoolDownTimer
 
 const SPEED := 600.0
 const ACCEL := 1.3
 const STARTING_HEALTH : float = 20.0
 
+var shooting_cooldown : float = 0.075
 var health := STARTING_HEALTH
-
 var input: Vector2
+
+var can_shoot := true
 
 signal healthChanged(health)
 signal died
 
 func _ready() -> void:
 	Global.player_node = self
+	
 	health = STARTING_HEALTH
+	cooldown_timer.wait_time = shooting_cooldown
 
 func getNormalizedInput():
 
@@ -56,7 +61,14 @@ func lowerHeath(healthTaken):
 	print("health is currently ", health)
 
 func shoot():
-	var bullet = Bullet.instantiate()
-	owner.add_child(bullet)
-	bullet.transform = muzzle.global_transform
-	
+	# Instaniate bullet
+	if can_shoot:
+		var bullet = Bullet.instantiate()
+		owner.add_child(bullet)
+		bullet.transform = muzzle.global_transform		
+		cooldown_timer.start()
+		
+
+
+func _on_cooldown_timer_timeout() -> void:
+	can_shoot = true

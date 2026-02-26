@@ -27,3 +27,7 @@ position_smoothing_enabled = true
 
 [node name="Muzzle" type="Marker2D" parent="." unique_id=1649007118]
 position = Vector2(52, 0)
+
+[node name="CoolDownTimer" type="Timer" parent="." unique_id=897117805]
+
+[connection signal="timeout" from="CoolDownTimer" to="." method="_on_cooldown_timer_timeout"]
