@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://qxxsdhshkpg5"]
+
+[ext_resource type="Script" uid="uid://dwrfxkksn2k2c" path="res://scripts/enemy_spawner.gd" id="1_ks1gq"]
+[ext_resource type="PackedScene" uid="uid://bt5av3t27rt4i" path="res://scenes/enemy.tscn" id="2_devoi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_devoi"]
+size = Vector2(493, 302)
+
+[node name="EnemySpawner" type="Node2D" unique_id=1249019799]
+script = ExtResource("1_ks1gq")
+enemy_scene = ExtResource("2_devoi")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2090105995]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=233713563]
+position = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_devoi")
+
+[node name="SpawnTimer" type="Timer" parent="." unique_id=1209039945]
+wait_time = 0.5
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

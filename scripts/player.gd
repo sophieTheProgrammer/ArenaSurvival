@@ -10,7 +10,7 @@ const SPEED := 600.0
 const ACCEL := 1.3
 const STARTING_HEALTH : float = 20.0
 
-var shooting_cooldown : float = 0.075
+var shooting_cooldown : float = 1
 var health := STARTING_HEALTH
 var input: Vector2
 

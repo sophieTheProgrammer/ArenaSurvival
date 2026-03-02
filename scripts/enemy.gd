@@ -11,12 +11,13 @@ var is_damaging := false
 
 var exitingPlayer := false
 func _ready() -> void:
+	player = Global.player_node
 	add_to_group("enemy")
 	if not player:
 		printerr("no player reference to enemy")
 
 func _physics_process(delta: float) -> void:
-	var direction = position.direction_to(player.global_position)
+	var direction = global_position.direction_to(player.global_position)
 	
 	velocity = direction * MOVE_SPEED
 	
