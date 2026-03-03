@@ -5,6 +5,13 @@ extends Node2D
 @onready var collision_shape_2d: CollisionShape2D = $Area2D/CollisionShape2D
 @onready var spawn_timer: Timer = $SpawnTimer
 
+var enemySpawnRate: float = 10.0: 
+	set(value):
+		if spawn_timer:
+			enemySpawnRate = value
+			spawn_timer.wait_time = enemySpawnRate
+		else:
+			printerr("spawnTimer doesn't exist")
 var area2d_extents
 
 func _ready() -> void:
@@ -14,6 +21,10 @@ func _ready() -> void:
 	
 	spawn_enemy()
 	
+	enemySpawnRate = 1.0
+	print(enemySpawnRate)
+	print(spawn_timer.wait_time)
+
 func _on_spawn_timer_timeout() -> void:
 	spawn_enemy()
 	spawn_timer.start()

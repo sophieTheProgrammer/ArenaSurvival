@@ -8,8 +8,8 @@ const MOVE_SPEED := 100.0
 signal playerHit
 
 var is_damaging := false
-
 var exitingPlayer := false
+
 func _ready() -> void:
 	player = Global.player_node
 	add_to_group("enemy")

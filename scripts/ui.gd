@@ -7,7 +7,7 @@ extends Control
 var time : float =  0.0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	health_bar.value = health_bar.max_value
 
 
 func _process(delta: float) -> void:
