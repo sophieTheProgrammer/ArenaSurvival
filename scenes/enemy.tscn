@@ -10,7 +10,7 @@ size = Vector2(24.25, 19.25)
 
 [node name="enemy" type="CharacterBody2D" unique_id=75792727 groups=["enemy"]]
 collision_layer = 2
-collision_mask = 3
+collision_mask = 2
 script = ExtResource("1_7p1mj")
 
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=594615164]

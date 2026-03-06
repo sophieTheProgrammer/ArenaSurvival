@@ -9,3 +9,5 @@ const DEBUG_HEALTH = false
 const DEBUG_ENEMY_MOVEMENT = false
 
 const DEBUG_PLAYER_TURNS_TO_MOUSE = false
+
+enum stages {ONE, TWO, THREE, FINAL}
