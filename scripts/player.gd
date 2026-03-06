@@ -5,6 +5,8 @@ extends CharacterBody2D
 @export var Bullet : PackedScene
 @onready var muzzle: Marker2D = $Muzzle
 @onready var cooldown_timer: Timer = $CoolDownTimer
+@onready var safetyCollisionShape: CollisionShape2D = $SafetyZone/CollisionShape2D
+
 
 const SPEED := 600.0
 const ACCEL := 1.3
@@ -39,7 +41,7 @@ func lookAtMouse(delta):
 
 func _process(delta: float) -> void:
 	if health == 0:
-		print("player die")
+		print("player died")
 		died.emit()
 		get_tree().call_deferred("reload_current_scene")
 	if Input.is_action_just_pressed("shoot"):
@@ -49,16 +51,18 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	getNormalizedInput()
 	
-	lookAtMouse(delta)
+	if not Global.DEBUG_PLAYER_TURNS_TO_MOUSE:
+		lookAtMouse(delta)
 
 	velocity = lerp(velocity, input * SPEED, delta * ACCEL)
 
 	move_and_slide()
 
 func lowerHeath(healthTaken):
-	health -= healthTaken
-	healthChanged.emit(health)
-	print("health is currently ", health)
+	if not Global.DEBUG_HEALTH:
+		health -= healthTaken
+		healthChanged.emit(health)
+		print("health is currently ", health)
 
 func shoot():
 	# Instaniate bullet

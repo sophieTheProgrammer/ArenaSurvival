@@ -3,15 +3,20 @@
 [ext_resource type="Script" uid="uid://cyyl7aaseaslu" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="PackedScene" uid="uid://2iijo0qfdkuy" path="res://scenes/bullet.tscn" id="2_g2els"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_u8vuu"]
-radius = 9.219544
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
+size = Vector2(40, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
+size = Vector2(350, 350)
 
 [node name="Player" type="CharacterBody2D" unique_id=177154753]
+collision_layer = 3
 script = ExtResource("1_3vyb7")
 Bullet = ExtResource("2_g2els")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=285247871]
-shape = SubResource("CircleShape2D_u8vuu")
+position = Vector2(10, 2.5)
+shape = SubResource("RectangleShape2D_g2els")
 
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=1629436760]
 position = Vector2(-36.99855, -5.1763)
@@ -29,5 +34,11 @@ position_smoothing_enabled = true
 position = Vector2(52, 0)
 
 [node name="CoolDownTimer" type="Timer" parent="." unique_id=897117805]
+
+[node name="SafetyZone" type="Area2D" parent="." unique_id=891931689]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SafetyZone" unique_id=451212843]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_qhqgy")
 
 [connection signal="timeout" from="CoolDownTimer" to="." method="_on_cooldown_timer_timeout"]
