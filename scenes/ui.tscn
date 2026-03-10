@@ -36,3 +36,12 @@ text = "placeholder time"
 offset_right = 407.0
 offset_bottom = 79.0
 value = 50.0
+
+[node name="StageLabel" type="RichTextLabel" parent="CanvasLayer" unique_id=352250683]
+visible = false
+offset_left = 457.0
+offset_top = 267.0
+offset_right = 971.0
+offset_bottom = 387.0
+text = "STAGE: X
+"

@@ -19,8 +19,4 @@ shape = SubResource("RectangleShape2D_devoi")
 [node name="SpawnTimer" type="Timer" parent="." unique_id=1209039945]
 wait_time = 0.5
 
-[node name="ComplexityTimer" type="Timer" parent="." unique_id=136411650]
-wait_time = 10.0
-
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
-[connection signal="timeout" from="ComplexityTimer" to="." method="_on_complexity_timer_timeout"]

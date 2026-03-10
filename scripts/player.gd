@@ -69,8 +69,15 @@ func shoot():
 	if can_shoot:
 		var bullet = Bullet.instantiate()
 		owner.add_child(bullet)
-		bullet.transform = muzzle.global_transform		
+		bullet.transform = muzzle.global_transform
+		
 		cooldown_timer.start()
+		
+		
+		#var angle_to_mouse = bullet.global_position.angle_to_point(get_global_mouse_position())
+		#print(angle_to_mouse, muzzle.global_rotation)
+		#print((muzzle.global_rotation + angle_to_mouse) / 2)
+		#muzzle.global_rotation = (muzzle.global_rotation + angle_to_mouse) / 2
 		
 
 
