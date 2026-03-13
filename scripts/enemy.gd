@@ -31,12 +31,10 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:
 		is_damaging = true
 		damage_timer.start()
-
 # updates exiting player var
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body is Player:
 		is_damaging = false
-
 # damages player until exiting player
 func _on_damage_timer_timeout() -> void:
 	if is_damaging:

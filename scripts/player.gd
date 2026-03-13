@@ -7,12 +7,12 @@ extends CharacterBody2D
 @onready var cooldown_timer: Timer = $CoolDownTimer
 @onready var safetyCollisionShape: CollisionShape2D = $SafetyZone/CollisionShape2D
 
-
-const SPEED := 600.0
+const MOUSE_TURN_RATE := 0.175
+const SPEED := 650.0
 const ACCEL := 1.3
 const STARTING_HEALTH : float = 20.0
 
-var shooting_cooldown : float = 1
+var shooting_cooldown : float = 0.1
 var health := STARTING_HEALTH
 var input: Vector2
 
@@ -37,7 +37,7 @@ func getNormalizedInput():
 func lookAtMouse(delta):
 	var new_transform := transform.looking_at(get_global_mouse_position())
 
-	transform = transform.interpolate_with(new_transform, 0.1)
+	transform = transform.interpolate_with(new_transform, MOUSE_TURN_RATE)
 
 func _process(delta: float) -> void:
 	if health == 0:
@@ -78,7 +78,7 @@ func shoot():
 		#print(angle_to_mouse, muzzle.global_rotation)
 		#print((muzzle.global_rotation + angle_to_mouse) / 2)
 		#muzzle.global_rotation = (muzzle.global_rotation + angle_to_mouse) / 2
-		
+		can_shoot = false
 
 
 func _on_cooldown_timer_timeout() -> void:

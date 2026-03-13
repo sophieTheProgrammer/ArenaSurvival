@@ -1,12 +1,14 @@
 extends Node
 
+var enemiesAmount : int = 0 
+
 var player_node : Player = null
 var ui_node = null
 # player does not lose health
-const DEBUG_HEALTH = true
+const DEBUG_HEALTH = false
 
 # enemy doesn't move
-const DEBUG_ENEMY_MOVEMENT = true
+const DEBUG_ENEMY_MOVEMENT = false
 
 const DEBUG_PLAYER_TURNS_TO_MOUSE = false
 

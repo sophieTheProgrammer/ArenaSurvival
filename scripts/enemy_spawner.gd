@@ -21,6 +21,7 @@ var enemySpawnCounter : float = 0
 var slowEnemySpawnCounter : float = 0
 
 signal spawnTimerTimeout
+signal waveEnded
 
 func _ready() -> void:
 	spawn_timer.wait_time = enemySpawnRate
@@ -58,8 +59,6 @@ func spawn_enemy(amount: float, type : Global.ENEMY_TYPE):
 			iter += 1
 			print(iter, " relocating enemy due to bad placement, in player safezone?")
 	
-func wave_end():
-	pass
 func start_wave(wave_number):
 	var wave = Global.STAGE_SPAWNS[wave_number]
 	waveEnemiesSpawned = 0
@@ -68,14 +67,18 @@ func start_wave(wave_number):
 	
 	if not wave:
 		printerr("index on start_wave didn't get a stage")
+	if Global.ui_node:
+		Global.ui_node.show_stage_label(wave_number)
+	else:
+		printerr("no global ui_node reference in enemy_spawner")
 	
-	Global.ui_node.show_stage_label(wave_number)
 	# spawn enemies until enemies above cap
 	while wave.normal_enemies_cap > waveEnemiesSpawned: #or wave.slow_enemies_cap > waveSlowEnemiesSpawned:
 		spawn_timer.start()
 		
 		await spawnTimerTimeout
-		# spawn_enemy(1, Global.ENEMY_TYPE.FAST)
+		spawn_enemy(1, Global.ENEMY_TYPE.FAST)
+		Global.enemiesAmount += 1 
 		waveEnemiesSpawned += 1
 		print("spawnTimer timed out now adding enemy: ", waveEnemiesSpawned)
 	print("finished spawning enemies")

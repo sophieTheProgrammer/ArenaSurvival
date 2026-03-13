@@ -23,6 +23,10 @@ Global="*uid://3jern55ygo5t"
 
 window/stretch/mode="viewport"
 
+[global_group]
+
+bullet=""
+
 [input]
 
 right={

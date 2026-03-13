@@ -6,6 +6,7 @@ extends Control
 @onready var health_bar: ProgressBar = $CanvasLayer/HealthBar
 @onready var player = Global.player_node
 @onready var stage_label: RichTextLabel = $CanvasLayer/StageLabel
+@onready var enemy_num: RichTextLabel = $CanvasLayer/EnemyNum
 
 var time : float =  0.0
 # Called when the node enters the scene tree for the first time.
@@ -17,7 +18,7 @@ func _process(delta: float) -> void:
 	time += delta	
 	timer_number.text = str(snapped(time, 0.1))
 
-
+	enemy_num.text = "amount of enemies rn is: " + str(Global.enemiesAmount)
 func _on_player_health_changed(health: Variant) -> void:
 	health_bar.value = 100 * (Global.player_node.health / Global.player_node.STARTING_HEALTH)
 
